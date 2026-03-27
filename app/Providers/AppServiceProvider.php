@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use ArielMejiaDev\HealingFactor\Facades\HealingFactor;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -24,6 +25,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureDefaults();
+
+        HealingFactor::auth(function ($user) {
+            return in_array($user->email, [
+                'arielmejiadev@gmail.com',
+            ]);
+        });
     }
 
     /**
