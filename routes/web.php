@@ -8,7 +8,6 @@ Route::inertia('/', 'welcome', [
 ])->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    $user->email;
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
 });
 
